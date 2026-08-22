@@ -317,7 +317,7 @@ The AT Protocol has a [complex](https://docs.bsky.app/docs/advanced-guides/oauth
 
 Resovling PDS servers for a user is involved and beyond the scope of this library. However, [ATIdentityTools](https://github.com/ATProtoKit/ATIdentityTools) or [ATResolve](https://github.com/ATProtoKit/ATResolve) might help!
 
-If you are using a platform that does not have [CryptoKit](https://developer.apple.com/documentation/cryptokit/) available, like Linux, or you are choosing not to use [SwiftCrypto](https://github.com/apple/SwiftCrypto), you'll have to supply a `PKCEVerifier` parameter to the `Bluesky.tokenHandling` function.
+If you are using a platform that does not have [CryptoKit](https://developer.apple.com/documentation/cryptokit/) available, like Linux, or you are choosing not to use [Swift Crypto](https://github.com/apple/swift-crypto), you'll have to supply a `PKCEVerifier` parameter to the `Bluesky.tokenHandling` function.
 
 See above for an example of how to implement DPoP JWTs.
 
