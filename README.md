@@ -22,7 +22,7 @@ There's also built-in support for services to streamline integration:
 - GitHub
 - Mastodon
 - Google API
-- Bluesky
+- Bluesky and other AT Protocol services
 
 If you'd like to contribute a similar thing for another service, please open a PR!
 
@@ -32,7 +32,7 @@ Swift Package Manager:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/ChimeHQ/OAuthenticator", from: "0.3.0")
+    .package(url: "https://github.com/ATProtoKit/OAuthenticator", from: "0.3.0")
 ]
 ```
 
@@ -308,16 +308,16 @@ request.httpBody = ...          // File data to upload
 let (data, response) = try await authenticator.response(for: request)
 ```
 
-### Bluesky API
+### Bluesky and AT Protocol
 
-Bluesky has a [complex](https://docs.bsky.app/docs/advanced-guides/oauth-client) OAuth implementation.
+The AT Protocol has a [complex](https://docs.bsky.app/docs/advanced-guides/oauth-client) OAuth implementation.
 
 > [!WARNING]
 > bsky.social's DPoP nonce changes frequently (maybe every 10-30 seconds?). I have observed that if the nonce changes between when a user requested a 2FA code and the code being entered, the server will reject the login attempt. Trying again will involve user interaction.
 
-Resovling PDS servers for a user is involved and beyond the scope of this library. However, [ATResolve](https://github.com/mattmassicotte/ATResolve) might help!
+Resovling PDS servers for a user is involved and beyond the scope of this library. However, [ATIdentityTools](https://github.com/ATProtoKit/ATIdentityTools) or [ATResolve](https://github.com/ATProtoKit/ATResolve) might help!
 
-If you are using a platform that does not have [CryptoKit](https://developer.apple.com/documentation/cryptokit/) available, like Linux, you'll have to supply a `PKCEVerifier` parameter to the `Bluesky.tokenHandling` function.
+If you are using a platform that does not have [CryptoKit](https://developer.apple.com/documentation/cryptokit/) available, like Linux, or you are choosing not to use [SwiftCrypto](https://github.com/apple/SwiftCrypto), you'll have to supply a `PKCEVerifier` parameter to the `Bluesky.tokenHandling` function.
 
 See above for an example of how to implement DPoP JWTs.
 
@@ -369,11 +369,11 @@ I prefer collaboration, and would love to find ways to work together if you have
 
 I prefer indentation with tabs for improved accessibility. But, I'd rather you use the system you want and make a PR than hesitate because of whitespace.
 
-By participating in this project you agree to abide by the [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+By participating in this project you agree to abide by the [Contributor Code of Conduct](https://github.com/ATProtoKit/.github/blob/main/CODE_OF_CONDUCT.md).
 
 [build status]: https://github.com/ChimeHQ/OAuthenticator/actions
 [build status badge]: https://github.com/ChimeHQ/OAuthenticator/workflows/CI/badge.svg
-[platforms]: https://swiftpackageindex.com/ChimeHQ/OAuthenticator
-[platforms badge]: https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FChimeHQ%2FOAuthenticator%2Fbadge%3Ftype%3Dplatforms
+[platforms]: https://swiftpackageindex.com/ATProtoKit/OAuthenticator
+[platforms badge]: https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FATProtoKit%2FOAuthenticator%2Fbadge%3Ftype%3Dplatforms
 [documentation]: https://swiftpackageindex.com/ChimeHQ/OAuthenticator/main/documentation
 [documentation badge]: https://img.shields.io/badge/Documentation-DocC-blue
